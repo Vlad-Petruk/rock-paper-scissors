@@ -2,22 +2,21 @@ let weapons = ['rock', 'paper', 'scissors']
 
 function getComputerChoice () {
     const randomChoice = weapons[Math.floor(Math.random()*weapons.length)]
-    return console.log(randomChoice)
+    return randomChoice;
 }
 
 // function playSingleRound (playerSelection, computerSelection) {
 //  switch (playerSelection, computerSelection) {
-//     case ('rock','paper'):
-//     case ('paper','scissors'):
-//     case ('scissors','rock'):
-//         return "You lose!";
-//         break;
 //     case ('rock', 'rock'):
 //     case ('paper','paper'):
 //     case ('scissors','scissors'):
 //         return "Tie!";
 //         break;
-    
+//     case ('rock','paper'):
+//     case ('paper','scissors'):
+//     case ('scissors','rock'):
+//         return "You lose!";
+//         break;
 //     case ('paper','rock'):
 //     case ('scissors','paper'):
 //     case ('rock','scissors'):
@@ -29,13 +28,8 @@ function getComputerChoice () {
 // }
 
 function playSingleRound (playerSelection, computerSelection) {
-    if (playerSelection === "rock"&& computerSelection === "rock") {
-        return "Tie!";
-    } 
-    else if (playerSelection === "paper" && computerSelection === "paper"){
-        return "Tie!";
-    }
-    else if (playerSelection === "scissors" && computerSelection === "scissors"){
+     
+    if (playerSelection === computerSelection) {
         return "Tie!";
     }
     else if (playerSelection === "rock" && computerSelection === "scissors"){
@@ -58,7 +52,29 @@ function playSingleRound (playerSelection, computerSelection) {
     } else { return "wrong"}
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playSingleRound(playerSelection, computerSelection));
+// const playerSelection = (prompt('Choose your weapon'))
+// const computerSelection = getComputerChoice();
+// console.log(playSingleRound(playerSelection, computerSelection));
 // console.log(computerSelection)
+function game () {
+    let result;
+    let playerScore = 0;
+    let computerScore = 0;
+    for (i=1; i <= 5; i++) {
+        const playerSelection = (prompt('Choose your weapon')).toLowerCase();
+        const computerSelection = getComputerChoice();
+        result = playSingleRound(playerSelection, computerSelection);
+        if (result === "You win!") {
+            playerScore++;
+        } else if (result === "You lose!") {
+            computerScore++;
+        }
+        console.log (result);
+    }
+    if (playerScore > computerScore) {
+        return console.log("Player win")
+    } else if (playerScore < computerScore) {
+        return console.log("Computer win")
+    } else return console.log("Tie! Try again")
+}
+game();
