@@ -5,27 +5,6 @@ function getComputerChoice () {
     return randomChoice;
 }
 
-// function playSingleRound (playerSelection, computerSelection) {
-//  switch (playerSelection, computerSelection) {
-//     case ('rock', 'rock'):
-//     case ('paper','paper'):
-//     case ('scissors','scissors'):
-//         return "Tie!";
-//         break;
-//     case ('rock','paper'):
-//     case ('paper','scissors'):
-//     case ('scissors','rock'):
-//         return "You lose!";
-//         break;
-//     case ('paper','rock'):
-//     case ('scissors','paper'):
-//     case ('rock','scissors'):
-//         return "You win!"
-//         break;
-//     default:
-//         return "Wrong weapons"
-//  }
-// }
 
 function playSingleRound (playerSelection, computerSelection) {
      
