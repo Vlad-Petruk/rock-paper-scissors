@@ -45,7 +45,9 @@ p.textContent = "Round result: ";
 resultbox.appendChild(p);
 
 let playerScoreCount = document.querySelector('.player-score');
+let updatePlayerScore = 0;
 let computerScoreCount = document.querySelector('.computer-score');
+let updateComputerScore = 0;
 
 let clickEvent = () => {
     p.textContent = "Round result: "
@@ -60,8 +62,12 @@ let clickEvent = () => {
          computerScore++;
          }
         p.textContent += result;
-    playerScoreCount.textContent += playerScore;
-    computerScoreCount.textContent += computerScore
+        
+    updatePlayerScore += playerScore;
+    playerScoreCount.innerHTML = updatePlayerScore;
+    updateComputerScore += computerScore;
+    computerScoreCount.textContent = updateComputerScore;
+    
 }
 
 
@@ -80,6 +86,7 @@ btnScissors.addEventListener('click', ()=>{
      playerSelection = 'scissors';
     clickEvent()
 })
+
 // function game () {
 //     let result;
 //     let playerScore = 0;
