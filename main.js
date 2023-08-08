@@ -44,6 +44,9 @@ let p = document.createElement('p');
 p.textContent = "Round result: ";
 resultbox.appendChild(p);
 
+let playerScoreCount = document.querySelector('.player-score');
+let computerScoreCount = document.querySelector('.computer-score');
+
 let clickEvent = () => {
     p.textContent = "Round result: "
     let playerScore = 0;
@@ -57,45 +60,15 @@ let clickEvent = () => {
          computerScore++;
          }
         p.textContent += result;
+    playerScoreCount.textContent += playerScore;
+    computerScoreCount.textContent += computerScore
 }
 
-
-// buttons.forEach((item) => {
-//     switch(item.textContent){
-//         case 'Rock':
-//             playerSelection = 'rock'
-//             item.addEventListener('click', clickEvent);
-            
-//             break;
-//         case 'Paper':
-//             playerSelection = 'paper'
-//             item.addEventListener('click', clickEvent);
-            
-//             break;  
-//         case 'Scissors':
-//             playerSelection = 'scissors'
-//             item.addEventListener('click', clickEvent);
-//             console.log(item.textContent)
-//             break;
-//     }
-//     // if (item.textContent === 'Rock'){
-//     //      playerSelection = 'rock'
-//     //      item.addEventListener('click', clickEvent)
-//     // } else if (item.textContent === 'Paper'){
-//     //     playerSelection = 'paper'
-//     //     item.addEventListener('click', clickEvent)
-//     // } 
-//     // else if (item.textContent === 'Scissors'){
-//     //     playerSelection = 'scissors'
-//     //     item.addEventListener('click', clickEvent)
-//     // }
-    
-// });
 
 btnRock.addEventListener('click', ()=>{
      playerSelection = 'rock';
     clickEvent()
-
+    
 })
 
 btnPaper.addEventListener('click', ()=>{
