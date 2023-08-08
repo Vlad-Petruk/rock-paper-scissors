@@ -31,20 +31,24 @@ function playSingleRound (playerSelection, computerSelection) {
     } else { return "wrong"}
 }
 let container = document.querySelector('main-container');
+
 let buttonBox = document.querySelector('.choice-buttons');
 let btnRock = document.querySelector('.btn-rock');
 let btnPaper = document.querySelector('.btn-paper');
 let btnScissors = document.querySelector('.btn-scissors');
+
+let buttons = document.querySelectorAll('button');
+
 let resultbox = document.querySelector('.results');
 let p = document.createElement('p');
 p.textContent = "Round result: ";
 resultbox.appendChild(p);
 
-btnRock.addEventListener('click', ()=>{
+let clickEvent = () => {
     p.textContent = "Round result: "
     let playerScore = 0;
     let computerScore = 0;
-    const playerSelection = 'rock'
+    // const playerSelection = 'rock'
     const computerSelection = getComputerChoice();
     let result = playSingleRound(playerSelection, computerSelection);
     if (result === "You win! Scissors beat Paper"||result === "You win! Rock beats Scissors"||result === "You win! Paper beats Rock") {
@@ -53,38 +57,56 @@ btnRock.addEventListener('click', ()=>{
          computerScore++;
          }
         p.textContent += result;
+}
+
+
+// buttons.forEach((item) => {
+//     switch(item.textContent){
+//         case 'Rock':
+//             playerSelection = 'rock'
+//             item.addEventListener('click', clickEvent);
+            
+//             break;
+//         case 'Paper':
+//             playerSelection = 'paper'
+//             item.addEventListener('click', clickEvent);
+            
+//             break;  
+//         case 'Scissors':
+//             playerSelection = 'scissors'
+//             item.addEventListener('click', clickEvent);
+//             console.log(item.textContent)
+//             break;
+//     }
+//     // if (item.textContent === 'Rock'){
+//     //      playerSelection = 'rock'
+//     //      item.addEventListener('click', clickEvent)
+//     // } else if (item.textContent === 'Paper'){
+//     //     playerSelection = 'paper'
+//     //     item.addEventListener('click', clickEvent)
+//     // } 
+//     // else if (item.textContent === 'Scissors'){
+//     //     playerSelection = 'scissors'
+//     //     item.addEventListener('click', clickEvent)
+//     // }
+    
+// });
+
+btnRock.addEventListener('click', ()=>{
+     playerSelection = 'rock';
+    clickEvent()
 
 })
 
 btnPaper.addEventListener('click', ()=>{
-    p.textContent = "Round result: "
-    let playerScore = 0;
-    let computerScore = 0;
-    const playerSelection = 'paper'
-    const computerSelection = getComputerChoice();
-    let result = playSingleRound(playerSelection, computerSelection);
-    if (result === "You win! Scissors beat Paper"||result === "You win! Rock beats Scissors"||result === "You win! Paper beats Rock") {
-        playerScore++;
-        } else if (result === "You lose! Scissors beat Paper"||result === "You lose! Rock beats Scissors"||result === "You lose! Paper beats Rock") {
-         computerScore++;
-         }
-         p.textContent += result;
-        })
+     playerSelection = 'paper';
+    clickEvent()
+})
 
 btnScissors.addEventListener('click', ()=>{
-    p.textContent = "Round result: "
-    let playerScore = 0;
-    let computerScore = 0;
-    const playerSelection = 'scissors'
-    const computerSelection = getComputerChoice();
-    let result = playSingleRound(playerSelection, computerSelection);
-    if (result === "You win! Scissors beat Paper"||result === "You win! Rock beats Scissors"||result === "You win! Paper beats Rock") {
-        playerScore++;
-        } else if (result === "You lose! Scissors beat Paper"||result === "You lose! Rock beats Scissors"||result === "You lose! Paper beats Rock") {
-         computerScore++;
-         }
-     p.textContent += result;;
- })
+     playerSelection = 'scissors';
+    clickEvent()
+})
 // function game () {
 //     let result;
 //     let playerScore = 0;
