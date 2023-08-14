@@ -37,6 +37,7 @@ let btnRock = document.querySelector('.btn-rock');
 let btnPaper = document.querySelector('.btn-paper');
 let btnScissors = document.querySelector('.btn-scissors');
 let btnStart = document.querySelector('.start-game')
+let btnStartAgain = document.querySelector('.start-again')
 
 let buttons = document.querySelectorAll('button');
 
@@ -53,6 +54,8 @@ let updateComputerScore = 0;
 let winner = document.querySelector('.winner');
 
 btnStart.addEventListener('click', ()=>{
+    updatePlayerScore = 0;
+    updateComputerScore = 0;
     game();
     btnStart.classList.toggle("hide")
 })
@@ -85,21 +88,28 @@ let clickEvent = () => {
         gameOver();
     }
 }
+
+function rock (){
+    playerSelection = 'rock';
+   clickEvent()  
+}
+
+function paper(){
+    playerSelection = 'paper';
+   clickEvent()
+}
+
+function scissors(){
+    playerSelection = 'scissors';
+   clickEvent()
+}
+
 function game() {
-btnRock.addEventListener('click', ()=>{
-     playerSelection = 'rock';
-    clickEvent()  
-})
+btnRock.addEventListener('click', rock)
 
-btnPaper.addEventListener('click', ()=>{
-     playerSelection = 'paper';
-    clickEvent()
-})
+btnPaper.addEventListener('click',paper)
 
-btnScissors.addEventListener('click', ()=>{
-     playerSelection = 'scissors';
-    clickEvent()
-})
+btnScissors.addEventListener('click', scissors)
 
 }
 
@@ -107,8 +117,15 @@ btnScissors.addEventListener('click', ()=>{
 
 function gameOver() {
     p.textContent = "Round result: ";
-    btnRock.removeEventListener('click', ()=>{
-        playerSelection = 'rock';
-       clickEvent()  
-   })
+    btnRock.removeEventListener('click', rock);
+    btnPaper.removeEventListener('click',paper);
+    btnScissors.removeEventListener('click', scissors);
+    btnStartAgain.classList.remove('hide');
+    btnStartAgain.addEventListener('click',()=>{
+        winner.innerHTML = '';
+        playerScoreCount.innerHTML = 0;
+        computerScoreCount.innerHTML = 0;
+        btnStart.classList.remove('hide');
+        btnStartAgain.classList.add('hide');
+    })
 }
