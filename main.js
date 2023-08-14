@@ -36,6 +36,7 @@ let buttonBox = document.querySelector('.choice-buttons');
 let btnRock = document.querySelector('.btn-rock');
 let btnPaper = document.querySelector('.btn-paper');
 let btnScissors = document.querySelector('.btn-scissors');
+let btnStart = document.querySelector('.start-game')
 
 let buttons = document.querySelectorAll('button');
 
@@ -49,11 +50,17 @@ let updatePlayerScore = 0;
 let computerScoreCount = document.querySelector('.computer-score');
 let updateComputerScore = 0;
 
+let winner = document.querySelector('.winner');
+
+btnStart.addEventListener('click', ()=>{
+    game();
+    btnStart.classList.toggle("hide")
+})
+
 let clickEvent = () => {
     p.textContent = "Round result: "
     let playerScore = 0;
     let computerScore = 0;
-    // const playerSelection = 'rock'
     const computerSelection = getComputerChoice();
     let result = playSingleRound(playerSelection, computerSelection);
     if (result === "You win! Scissors beat Paper"||result === "You win! Rock beats Scissors"||result === "You win! Paper beats Rock") {
@@ -67,19 +74,21 @@ let clickEvent = () => {
     playerScoreCount.innerHTML = updatePlayerScore;
     updateComputerScore += computerScore;
     computerScoreCount.textContent = updateComputerScore;
+    
     if (updatePlayerScore >= 5) {
-        playerScoreCount.innerHTML = 0;
+        winner.textContent = 'YOU WIN!!!'
     }
     if (updateComputerScore >= 5) {
-        computerScoreCount.innerHTML = 0;
-        return
+        winner.textContent = 'COMPUTER WIN!!!'
+    }
+    if (winner.innerHTML === 'YOU WIN!!!'||winner.innerHTML === 'COMPUTER WIN!!!') {
+        gameOver();
     }
 }
 function game() {
 btnRock.addEventListener('click', ()=>{
      playerSelection = 'rock';
-    clickEvent()
-    
+    clickEvent()  
 })
 
 btnPaper.addEventListener('click', ()=>{
@@ -91,27 +100,15 @@ btnScissors.addEventListener('click', ()=>{
      playerSelection = 'scissors';
     clickEvent()
 })
+
 }
-game ();
-// function game () {
-//     let result;
-//     let playerScore = 0;
-//     let computerScore = 0;
-//     for (i=1; i <= 5; i++) {
-//         const playerSelection = (prompt('Choose your weapon')).toLowerCase();
-//         const computerSelection = getComputerChoice();
-//         result = playSingleRound(playerSelection, computerSelection);
-//         if (result === "You win!") {
-//             playerScore++;
-//         } else if (result === "You lose!") {
-//             computerScore++;
-//         }
-//         console.log (result);
-//     }
-//     if (playerScore > computerScore) {
-//         return console.log("Player win")
-//     } else if (playerScore < computerScore) {
-//         return console.log("Computer win")
-//     } else return console.log("Tie! Try again")
-// }
-// game();
+
+
+
+function gameOver() {
+    p.textContent = "Round result: ";
+    btnRock.removeEventListener('click', ()=>{
+        playerSelection = 'rock';
+       clickEvent()  
+   })
+}
