@@ -67,10 +67,15 @@ let clickEvent = () => {
     playerScoreCount.innerHTML = updatePlayerScore;
     updateComputerScore += computerScore;
     computerScoreCount.textContent = updateComputerScore;
-    
+    if (updatePlayerScore >= 5) {
+        playerScoreCount.innerHTML = 0;
+    }
+    if (updateComputerScore >= 5) {
+        computerScoreCount.innerHTML = 0;
+        return
+    }
 }
-
-
+function game() {
 btnRock.addEventListener('click', ()=>{
      playerSelection = 'rock';
     clickEvent()
@@ -86,7 +91,8 @@ btnScissors.addEventListener('click', ()=>{
      playerSelection = 'scissors';
     clickEvent()
 })
-
+}
+game ();
 // function game () {
 //     let result;
 //     let playerScore = 0;
